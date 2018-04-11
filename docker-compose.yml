@@ -1,0 +1,19 @@
+version: '3'
+services:
+    gerenciador-igrejas-mysql:
+        image: mariadb
+        command: mysqld --innodb-buffer-pool-size=20M
+        ports:
+          - "3306"
+        expose:
+          - "3306"
+    gerenciador-igrejas-api:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      ports:
+       - "8080:80"
+      volumes:
+       - .:/var/www
+      depends_on:
+        - gerenciador-igrejas-mysql
