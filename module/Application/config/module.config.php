@@ -6,6 +6,7 @@
 
 namespace Application;
 
+use Application\View\Strategy\ViewXLSXStrategy;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -42,7 +43,7 @@ return [
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',
-        ],
+        ]
     ],
 
     'doctrine' => [
@@ -52,7 +53,7 @@ return [
                 'class' => \Doctrine\ORM\Mapping\Driver\AnnotationDriver::class,
                 'cache' => 'array',
                 'paths' => [
-                    __DIR__.'/../src/Entity'
+                    __DIR__ . '/../src/Entity'
                 ],
             ],
 

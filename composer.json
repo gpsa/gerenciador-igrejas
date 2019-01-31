@@ -42,7 +42,8 @@
     "api-skeletons/zf-oauth2-doctrine-permissions-acl": "^2.0",
     "zfr/zfr-cors": "1.*",
     "zfcampus/zf-doctrine-querybuilder": "^1.5",
-    "beberlei/DoctrineExtensions": "^1.0"
+    "beberlei/DoctrineExtensions": "^1.0",
+    "phpoffice/phpspreadsheet": "1.6.0"
   },
   "require-dev": {
     "zendframework/zend-developer-tools": "^1.1",

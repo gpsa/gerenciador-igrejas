@@ -117,9 +117,9 @@ class FinancasDizimo
     }
 
     /**
-     * Get memId
+     * Get PessoaMembro
      *
-     * @return integer
+     * @return PessoaMembro
      */
     public function getMembro()
     {

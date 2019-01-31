@@ -11,11 +11,22 @@ return [
                     ],
                 ],
             ],
+            'dizimo.rpc.relatorio' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/dizimos/relatorio',
+                    'defaults' => [
+                        'controller' => 'Dizimo\\V1\\Rpc\\Relatorio\\Controller',
+                        'action' => 'relatorio',
+                    ],
+                ],
+            ],
         ],
     ],
     'zf-versioning' => [
         'uri' => [
             0 => 'dizimo.rest.doctrine.financas-dizimo',
+            1 => 'dizimo.rpc.relatorio',
         ],
     ],
     'zf-rest' => [
@@ -45,18 +56,64 @@ return [
     ],
     'zf-content-negotiation' => [
         'controllers' => [
-            'Dizimo\\V1\\Rest\\FinancasDizimo\\Controller' => 'HalJson',
+            'Dizimo\\V1\\Rest\\FinancasDizimo\\Controller' => 'HalJsonOrXLSX',
+            'Dizimo\\V1\\Rpc\\Relatorio\\Controller' => 'HalJson',
         ],
         'accept-whitelist' => [
             'Dizimo\\V1\\Rest\\FinancasDizimo\\Controller' => [
                 0 => 'application/vnd.dizimo.v1+json',
                 1 => 'application/hal+json',
                 2 => 'application/json',
+                3 => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             ],
         ],
         'content-type-whitelist' => [
             'Dizimo\\V1\\Rest\\FinancasDizimo\\Controller' => [
                 0 => 'application/json',
+                1 => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ],
+        ],
+        'accept_whitelist' => [
+            'Dizimo\\V1\\Rest\\FinancasDizimo\\Controller' => [
+                0 => 'application/json',
+                1 => 'application/*+json',
+                2 => 'application/vnd.ms-excel',
+                3 => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ],
+            'Dizimo\\V1\\Rpc\\Relatorio\\Controller' => [
+                0 => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ],
+        ],
+        'content_type_whitelist' => [
+            'Dizimo\\V1\\Rest\\FinancasDizimo\\Controller' => [
+                0 => 'application/json',
+                1 => 'application/vnd.ms-excel',
+                2 => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ],
+            'Dizimo\\V1\\Rpc\\Relatorio\\Controller' => [
+                0 => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ],
+        ],
+        'selectors' => [
+            'HalJson' => [
+                \ZF\Hal\View\HalJsonModel::class => [
+                    0 => 'application/json',
+                    1 => 'application/*+json',
+                ],
+            ],
+            'XSLX' => [
+                'Application\\ContentNegotiation\\XLSX' => [
+                    0 => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                ],
+            ],
+            'HalJsonOrXLSX' => [
+                \ZF\Hal\View\HalJsonModel::class => [
+                    0 => 'application/json',
+                    1 => 'application/*+json',
+                ],
+                'Application\\ContentNegotiation\\XLSX' => [
+                    0 => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                ],
             ],
         ],
     ],
@@ -183,6 +240,31 @@ return [
                     'DELETE' => true,
                 ],
             ],
+            'Dizimo\\V1\\Rpc\\Relatorio\\Controller' => [
+                'actions' => [
+                    'Relatorio' => [
+                        'GET' => true,
+                        'POST' => false,
+                        'PUT' => false,
+                        'PATCH' => false,
+                        'DELETE' => false,
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'controllers' => [
+        'factories' => [
+            'Dizimo\\V1\\Rpc\\Relatorio\\Controller' => \Dizimo\V1\Rpc\Relatorio\RelatorioControllerFactory::class,
+        ],
+    ],
+    'zf-rpc' => [
+        'Dizimo\\V1\\Rpc\\Relatorio\\Controller' => [
+            'service_name' => 'Relatorio',
+            'http_methods' => [
+                0 => 'GET',
+            ],
+            'route_name' => 'dizimo.rpc.relatorio',
         ],
     ],
 ];
