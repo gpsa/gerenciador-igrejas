@@ -23,34 +23,21 @@ class BirthDay extends AbstractFilter
             }
         }
 
-        if (! isset($queryType)) {
+        if (!isset($queryType)) {
             $queryType = 'andWhere';
         }
 
-        if (! isset($option['alias'])) {
+        if (!isset($option['alias'])) {
             $option['alias'] = 'row';
         }
-
-        $format = isset($option['format']) ? $option['format'] : null;
-
-        $from = $this->typeCastField($metadata, $option['field'], $option['from'], $format);
-        $to = $this->typeCastField($metadata, $option['field'], $option['to'], $format);
-
-        $fromParameter = uniqid('a1');
-        $toParameter = uniqid('a2');
-
-        $fomatDate = '%m-%d';
 
         $queryBuilder->$queryType(
             $queryBuilder
                 ->expr()
-                ->between(
-                    sprintf("DATE_FORMAT(%s.%s, '%s')", $option['alias'], $option['field'], $fomatDate),
-                    sprintf("DATE_FORMAT(:%s, '%s')", $fromParameter, $fomatDate),
-                    sprintf("DATE_FORMAT(:%s, '%s')", $toParameter, $fomatDate)
+                ->in(
+                    sprintf("DATE_FORMAT(%s.%s, '%s')", $option['alias'], $option['field'], '%b'),
+                    $option['months']
                 )
         );
-        $queryBuilder->setParameter($fromParameter, $from);
-        $queryBuilder->setParameter($toParameter, $to);
     }
 }

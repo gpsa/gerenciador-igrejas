@@ -14,7 +14,7 @@ return [
             'dizimo.rpc.relatorio' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/dizimos/relatorio',
+                    'route' => '/relatorios/dizimos',
                     'defaults' => [
                         'controller' => 'Dizimo\\V1\\Rpc\\Relatorio\\Controller',
                         'action' => 'relatorio',
@@ -260,7 +260,7 @@ return [
     ],
     'zf-rpc' => [
         'Dizimo\\V1\\Rpc\\Relatorio\\Controller' => [
-            'service_name' => 'Relatorio',
+            'service_name' => 'RelatorioDizimos',
             'http_methods' => [
                 0 => 'GET',
             ],

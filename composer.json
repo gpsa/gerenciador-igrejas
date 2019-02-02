@@ -1,13 +1,13 @@
 {
-  "name": "zfcampus/zf-apigility-skeleton",
+  "name": "gpsa/gerenciador-igrejas-api",
   "description": "Skeleton Application for Apigility",
-  "type": "library",
+  "type": "project",
   "license": "BSD-3-Clause",
   "keywords": [
     "api",
     "apigility",
-    "framework",
-    "zf2"
+    "zf",
+    "framework"
   ],
   "homepage": "http://apigility.org/",
   "support": {
@@ -21,36 +21,36 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.4-dev",
-      "dev-develop": "1.5-dev"
+      "dev-master": "1.5.x-dev",
+      "dev-develop": "1.6.x-dev"
     }
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": "^5.6 || ^7.0",
-    "zendframework/zend-component-installer": "^1.0 || ^0.5 || ^1.0.0-dev@dev",
-    "zfcampus/zf-apigility": "^1.3",
-    "zfcampus/zf-apigility-documentation": "^1.2.3",
-    "zfcampus/zf-development-mode": "^3.0",
+    "php": "^7.0",
+    "zendframework/zend-component-installer": "^1.1.1 || ^2.1.1",
+    "zfcampus/zf-apigility": "^1.4",
+    "zfcampus/zf-apigility-documentation": "^1.3",
+    "zfcampus/zf-development-mode": "^3.2",
     "zfcampus/zf-apigility-doctrine": "^2.1.0",
     "API-Skeletons/zf-oauth2-doctrine": "^2.0.3",
     "doctrine/doctrine-orm-module": "1.1.*",
     "doctrine/migrations": "^1.6",
     "api-skeletons/zf-doctrine-hydrator": "*",
     "api-skeletons/zf-oauth2-doctrine-console": "*",
-    "api-skeletons/zf-oauth2-doctrine-permissions-acl": "^2.0",
     "zfr/zfr-cors": "1.*",
     "zfcampus/zf-doctrine-querybuilder": "^1.5",
     "beberlei/DoctrineExtensions": "^1.0",
     "phpoffice/phpspreadsheet": "1.6.0"
   },
   "require-dev": {
-    "zendframework/zend-developer-tools": "^1.1",
-    "zfcampus/zf-apigility-admin": "^1.5.9",
-    "zfcampus/zf-asset-manager": "^1.1.1",
-    "zfcampus/zf-composer-autoloading": "^1.0",
-    "zfcampus/zf-deploy": "^1.2"
+    "zendframework/zend-developer-tools": "^1.2.1",
+    "zendframework/zend-test": "^2.6.1 || ^3.2",
+    "zfcampus/zf-apigility-admin": "^1.6",
+    "zfcampus/zf-asset-manager": "^1.2",
+    "zfcampus/zf-composer-autoloading": "^1.1.1 || ^2.1",
+    "zfcampus/zf-deploy": "^1.3"
   },
   "suggest": {
     "zfcampus/zf-apigility-doctrine": "zfcampus/zf-apigility-doctrine ^2.1 to create Doctrine-Connected REST services",
@@ -76,7 +76,10 @@
     "development-disable": "zf-development-mode disable",
     "development-enable": "zf-development-mode enable",
     "development-status": "zf-development-mode status",
-    "serve": "php -S 0.0.0.0:8080 -t public/ public/index.php",
+    "post-create-project-cmd": [
+      "@development-enable"
+    ],
+    "serve": "php -S 0.0.0.0:8080 -t public/",
     "test": "phpunit"
   }
 }

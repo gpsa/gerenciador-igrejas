@@ -27,8 +27,6 @@ class PessoaMembroFetchAll extends DefaultOrm
         $q = parent::createQuery($event, $entityClass, $parameters);
         $q->select('partial row.{id,nome,telefoneResidencial,dataNascimento,categoria}');
 
-//        echo $q->getQuery()->getSQL();exit;
-
         return $q;
     }
 }

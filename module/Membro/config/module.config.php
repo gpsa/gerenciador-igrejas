@@ -11,11 +11,22 @@ return [
                     ],
                 ],
             ],
+            'membro.rpc.relatorio-aniversariantes' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/relatorios/aniversariantes',
+                    'defaults' => [
+                        'controller' => 'Membro\\V1\\Rpc\\RelatorioAniversariantes\\Controller',
+                        'action' => 'relatorioAniversariantes',
+                    ],
+                ],
+            ],
         ],
     ],
     'zf-versioning' => [
         'uri' => [
             0 => 'membro.rest.doctrine.pessoa-membro',
+            1 => 'membro.rpc.relatorio-aniversariantes',
         ],
     ],
     'zf-rest' => [
@@ -45,6 +56,7 @@ return [
     'zf-content-negotiation' => [
         'controllers' => [
             'Membro\\V1\\Rest\\PessoaMembro\\Controller' => 'HalJson',
+            'Membro\\V1\\Rpc\\RelatorioAniversariantes\\Controller' => 'HalJson',
         ],
         'accept-whitelist' => [
             'Membro\\V1\\Rest\\PessoaMembro\\Controller' => [
@@ -56,6 +68,16 @@ return [
         'content-type-whitelist' => [
             'Membro\\V1\\Rest\\PessoaMembro\\Controller' => [
                 0 => 'application/json',
+            ],
+        ],
+        'accept_whitelist' => [
+            'Membro\\V1\\Rpc\\RelatorioAniversariantes\\Controller' => [
+                0 => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ],
+        ],
+        'content_type_whitelist' => [
+            'Membro\\V1\\Rpc\\RelatorioAniversariantes\\Controller' => [
+                0 => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             ],
         ],
     ],
@@ -82,7 +104,7 @@ return [
                 'query_providers' => [
                     'default' => 'default_orm',
                     'fetch_all' => \Membro\V1\Rest\PessoaMembro\PessoaMembroFetchAll::class,
-                ]
+                ],
             ],
         ],
     ],
@@ -598,6 +620,20 @@ return [
         ],
         'factories' => [
             \Application\Filter\ORM\BirthDay::class => \Zend\ServiceManager\Factory\InvokableFactory::class,
-        ]
+        ],
+    ],
+    'controllers' => [
+        'factories' => [
+            'Membro\\V1\\Rpc\\RelatorioAniversariantes\\Controller' => \Membro\V1\Rpc\RelatorioAniversariantes\RelatorioAniversariantesControllerFactory::class,
+        ],
+    ],
+    'zf-rpc' => [
+        'Membro\\V1\\Rpc\\RelatorioAniversariantes\\Controller' => [
+            'service_name' => 'RelatorioAniversariantes',
+            'http_methods' => [
+                0 => 'GET',
+            ],
+            'route_name' => 'membro.rpc.relatorio-aniversariantes',
+        ],
     ],
 ];

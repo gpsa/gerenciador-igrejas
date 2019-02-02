@@ -17,8 +17,8 @@ RUN apt-get update \
  && sed -i 's!/var/www/html!/var/www/public!g' /etc/apache2/sites-available/000-default.conf \
  && mv /var/www/html /var/www/public \
  && curl -sS https://getcomposer.org/installer \
-  | php -- --install-dir=/usr/local/bin --filename=composer
-
+  | php -- --install-dir=/usr/local/bin --filename=composer \
+ && echo "AllowEncodedSlashes On" >> /etc/apache2/apache2.conf
 # Altera o GID,UID do usuario www-data
 RUN NEWUID=1000 && \
 NEWGID=1000 && \

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dizimo\V1\Rpc\Relatorio;
+namespace Membro\V1\Rpc\RelatorioAniversariantes;
 
-use Application\Entity\FinancasDizimo;
+use Application\Entity\PessoaMembro;
 use Doctrine\ORM\EntityManager;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -14,7 +14,7 @@ use ZF\Doctrine\QueryBuilder\Filter\Service\ORMFilterManager;
 use ZF\Doctrine\QueryBuilder\OrderBy\Service\ORMOrderByManager;
 use ZfrCors\Service\CorsService;
 
-class RelatorioController extends AbstractActionController
+class RelatorioAniversariantesController extends AbstractActionController
 {
     /**
      * @var EntityManager
@@ -46,13 +46,13 @@ class RelatorioController extends AbstractActionController
         return $this;
     }
 
-    public function relatorioAction()
+    public function relatorioAniversariantesAction()
     {
         $queryBuilder = $this->em->createQueryBuilder();
         $queryBuilder->select('row')
-            ->from(FinancasDizimo::class, 'row');
+            ->from(PessoaMembro::class, 'row');
 
-        $metadata = $this->em->getMetadataFactory()->getMetadataFor(FinancasDizimo::class); // $e->getEntity() using doctrine resource event
+        $metadata = $this->em->getMetadataFactory()->getMetadataFor(PessoaMembro::class); // $e->getEntity() using doctrine resource event
         $this->filterManager->filter($queryBuilder, $metadata, $_GET['filter']);
         $this->orderByManager->orderBy($queryBuilder, $metadata, $_GET['order-by']);
 
@@ -64,7 +64,7 @@ class RelatorioController extends AbstractActionController
         // Create new Spreadsheet object
         $spreadsheet = new Spreadsheet();
 
-// Set document properties
+        // Set document properties
         $spreadsheet->getProperties()->setCreator('Maarten Balliauw')
             ->setLastModifiedBy('Maarten Balliauw')
             ->setTitle('Office 2007 XLSX Test Document')
@@ -79,22 +79,22 @@ class RelatorioController extends AbstractActionController
         // Cabeçalho
         $sheet->setCellValue('A1', 'Membro')
             ->setCellValue('B1', 'Data')
-            ->setCellValue('C1', 'Valor');
+            ->setCellValue('C1', 'Contato');
 
         $i = 1;
+        $limpaFones = function($row){
+            return !empty(preg_replace("![^0-9]!", "", $row));
+        };
 
         foreach ($result as $rowArray) {
             ++$i;
-            /* @var $row \Application\Entity\FinancasDizimo */
+            /* @var $row \Application\Entity\PessoaMembro */
             $row = $rowArray[0];
 
-            $sheet->setCellValue("A{$i}", $row->getMembro()->getNome())
-                ->setCellValue("B{$i}", $row->getData())
-                ->setCellValue("C{$i}", $row->getValor());
+            $sheet->setCellValue("A{$i}", $row->getNome())
+                ->setCellValue("B{$i}", $row->getDataNascimento()->format("d/m/Y"))
+                ->setCellValue("C{$i}", implode(" | ", array_filter([$row->getTelefoneCelular(), $row->getTelefoneComercial()], $limpaFones)));
         }
-
-        $sheet->setCellValue("B" . ($i + 1), "Total");
-        $sheet->setCellValue("C" . ($i + 1), "=SUM(C2:C{$i})");
 
         # Formatacao: Primeira Linha
         $sheet->getStyle('A1:C1')
@@ -114,10 +114,6 @@ class RelatorioController extends AbstractActionController
         $sheet->getColumnDimension('A')->setAutoSize(true);
         $sheet->getColumnDimension('B')->setAutoSize(true);
         $sheet->getColumnDimension('C')->setAutoSize(true);
-        # Formatacao: Moeda
-        $sheet->getStyle('C2:C' . ($i + 1))
-            ->getNumberFormat()
-            ->setFormatCode('[$R$-416] #.##0,00;[RED]-[$R$-416] #.##0,00');
 
         # Formatacao: Bordas
         /** Borders for all data */
@@ -138,7 +134,7 @@ class RelatorioController extends AbstractActionController
         $response->setHeaders((new Headers())->addHeaders([
             'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             // Redirect output to a client’s web browser (Xlsx)
-            'Content-Disposition' => 'attachment;filename="relatorio-dizimos.xlsx"'
+            'Content-Disposition' => 'attachment;filename="relatorio-aniversariantes.xlsx"'
         ]));
 
         try {
@@ -159,3 +155,4 @@ class RelatorioController extends AbstractActionController
         return $response->setContent(null);
     }
 }
+
