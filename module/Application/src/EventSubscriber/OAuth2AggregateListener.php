@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: guilherme
@@ -50,10 +51,10 @@ class OAuth2AggregateListener extends AbstractListenerAggregate
      */
     public function checkUserCredentials(Event $e)
     {
-        /* @var $rpUsuario UsuarioRepository */
+        /** @var $rpUsuario UsuarioRepository */
         $rpUsuario = $this->em->getRepository(Usuario::class);
-        /* @var $ret Usuario|null */
-        $usuario = $rpUsuario->getUsuarioByPasswordMD5($e->getParam('username'), $e->getParam('password')) ?? false;
+        /** @var $ret Usuario|null */
+        $usuario = $rpUsuario->getUsuarioByPasswordMD5($e->getParam('username'), $e->getParam('password'), 1) ?? false;
 
         //$adapter = $container->get('ZF\OAuth2\Doctrine\Adapter\DoctrineAdapter');
 

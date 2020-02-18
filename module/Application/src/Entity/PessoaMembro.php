@@ -32,6 +32,13 @@ class PessoaMembro
     /**
      * @var string
      *
+     * @ORM\Column(name="state", type="smallint", nullable=false, options={"default" : 1})
+     */
+    private $state = 1;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="sexo", type="string", length=255, nullable=true)
      */
     private $sexo;
@@ -913,5 +920,21 @@ class PessoaMembro
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
 
+    /**
+     * @param int $state
+     * @return int
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+        return $this;
+    }
 }

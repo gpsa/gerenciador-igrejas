@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: guilherme
@@ -14,6 +15,7 @@ use Interop\Container\Exception\ContainerException;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
+use Zend\Stdlib\Parameters;
 use ZF\Doctrine\QueryBuilder\Query\Provider\DefaultOrm;
 use ZF\Rest\ResourceEvent;
 
@@ -22,10 +24,10 @@ class PessoaMembroFetchAll extends DefaultOrm
 
     public function createQuery(ResourceEvent $event, $entityClass, $parameters)
     {
-
         /* @var $q QueryBuilder */
         $q = parent::createQuery($event, $entityClass, $parameters);
         $q->select('partial row.{id,nome,telefoneResidencial,dataNascimento,categoria}');
+        $q->andWhere('row.state = 1');
 
         return $q;
     }

@@ -50,7 +50,8 @@ class RelatorioAniversariantesController extends AbstractActionController
     {
         $queryBuilder = $this->em->createQueryBuilder();
         $queryBuilder->select('row')
-            ->from(PessoaMembro::class, 'row');
+            ->from(PessoaMembro::class, 'row')
+            ->andWhere('row.state = 1');
 
         $metadata = $this->em->getMetadataFactory()->getMetadataFor(PessoaMembro::class); // $e->getEntity() using doctrine resource event
         $this->filterManager->filter($queryBuilder, $metadata, $_GET['filter']);
@@ -82,7 +83,7 @@ class RelatorioAniversariantesController extends AbstractActionController
             ->setCellValue('C1', 'Contato');
 
         $i = 1;
-        $limpaFones = function($row){
+        $limpaFones = function ($row) {
             return !empty(preg_replace("![^0-9]!", "", $row));
         };
 
@@ -125,9 +126,9 @@ class RelatorioAniversariantesController extends AbstractActionController
                 ],
             ],
         ]);
-//
-//        $filtros = $request->getQuery('filter');
-//        $fromTo = (isset($filtros[0]['from']) ? sprintf)
+        //
+        //        $filtros = $request->getQuery('filter');
+        //        $fromTo = (isset($filtros[0]['from']) ? sprintf)
 
         /* @var $response \Zend\Http\PhpEnvironment\Response */
         $response = $this->getResponse();
@@ -150,9 +151,8 @@ class RelatorioAniversariantesController extends AbstractActionController
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
         $writer->save('php://output');
-//        exit;
+        //        exit;
 
         return $response->setContent(null);
     }
 }
-

@@ -46,9 +46,9 @@ class UsuarioResource extends DoctrineResource
 
     public function patch($id, $data)
     {
-        if(!empty($data->password)) {
+        if (!empty($data->password)) {
             $this->resolvePassword($data->password);
-        }else{
+        } else {
             unset($data->password);
         }
 

@@ -12,8 +12,7 @@ use ZF\OAuth2\Doctrine\Entity\UserInterface;
  * @ORM\Table(name="role")
  * @ORM\Entity
  */
-class Role implements
-    HierarchicalInterface
+class Role
 {
     /**
      * @var integer

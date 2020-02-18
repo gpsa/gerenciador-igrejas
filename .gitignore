@@ -6,7 +6,7 @@ config/development.config.php
 data/cache/*
 !data/cache/.gitkeep
 data/DoctrineORMModule/Proxy/*
-data/DoctrineORMModule/Migrations/*
+!data/DoctrineORMModule/Migrations/*
 !data/DoctrineORMModule/Proxy/.gitkeep
 !data/DoctrineORMModule/Migrations/.gitkeep
 data/logs/*

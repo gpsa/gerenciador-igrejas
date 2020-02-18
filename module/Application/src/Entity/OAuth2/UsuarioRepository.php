@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: guilherme
@@ -16,13 +17,14 @@ class UsuarioRepository extends EntityRepository
     public function getUsuarioByPasswordMD5(...$params)
     {
         $dql = <<<DQL
-SELECT u FROM Application\Entity\OAuth2\Usuario u WHERE u.username = :usuario AND (LENGTH(u.password) = 32 AND u.password = :senha)
+SELECT u FROM Application\Entity\OAuth2\Usuario u WHERE u.username = :usuario AND (LENGTH(u.password) = 32 AND u.password = :senha) AND u.state = :state
 DQL;
 
         $q = $this->getEntityManager()->createQuery($dql);
         $q->setParameters([
             'usuario' => $params[0],
-            'senha' => md5($params[1])
+            'senha' => md5($params[1]),
+            'state' => $params[2] ?? 1
         ]);
 
         return $q->getOneOrNullResult();
