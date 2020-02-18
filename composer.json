@@ -42,7 +42,7 @@
     "zfr/zfr-cors": "1.*",
     "zfcampus/zf-doctrine-querybuilder": "^1.5",
     "beberlei/DoctrineExtensions": "^1.0",
-    "phpoffice/phpspreadsheet": "1.6.0",
+    "phpoffice/phpspreadsheet": "1.8.0",
     "api-skeletons/zf-oauth2-doctrine-identity": "3.0.1",
     "zendframework/zend-permissions-rbac": "^3.0"
   },
