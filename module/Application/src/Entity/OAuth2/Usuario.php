@@ -251,12 +251,12 @@ class Usuario implements UserInterface, ArraySerializableInterface
 
     public function getState()
     {
-        return $this->state;
+        return (int) $this->state;
     }
 
     public function setState($state)
     {
-        $this->state = $state;
+        $this->state = (int) $state;
         return $this;
     }
 
@@ -344,6 +344,4 @@ class Usuario implements UserInterface, ArraySerializableInterface
         $this->ultimoAcesso = $ultimoAcesso;
         return $this;
     }
-
-
 }

@@ -14,10 +14,28 @@ use Doctrine\ORM\EntityRepository;
 
 class UsuarioRepository extends EntityRepository
 {
+    /**
+     * Undocumented function
+     *
+     * @param string $name
+     * @return Usuario|null
+     */
+    public function getByName($name)
+    {
+        return $this->findOneBy(['username' => $name]);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param array ...$params
+     * @return Usuario|null
+     */
     public function getUsuarioByPasswordMD5(...$params)
     {
         $dql = <<<DQL
-SELECT u FROM Application\Entity\OAuth2\Usuario u WHERE u.username = :usuario AND (LENGTH(u.password) = 32 AND u.password = :senha) AND u.state = :state
+SELECT u FROM Application\Entity\OAuth2\Usuario u 
+WHERE u.username = :usuario AND (LENGTH(u.password) = 32 AND u.password = :senha) AND u.state = :state
 DQL;
 
         $q = $this->getEntityManager()->createQuery($dql);

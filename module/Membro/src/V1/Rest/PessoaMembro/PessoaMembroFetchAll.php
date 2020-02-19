@@ -26,8 +26,7 @@ class PessoaMembroFetchAll extends DefaultOrm
     {
         /* @var $q QueryBuilder */
         $q = parent::createQuery($event, $entityClass, $parameters);
-        $q->select('partial row.{id,nome,telefoneResidencial,dataNascimento,categoria}');
-        $q->andWhere('row.state = 1');
+        $q->select('partial row.{state,id,nome,telefoneResidencial,dataNascimento,categoria}');
 
         return $q;
     }

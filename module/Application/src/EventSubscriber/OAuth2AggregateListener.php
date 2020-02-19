@@ -54,20 +54,21 @@ class OAuth2AggregateListener extends AbstractListenerAggregate
         /** @var $rpUsuario UsuarioRepository */
         $rpUsuario = $this->em->getRepository(Usuario::class);
         /** @var $ret Usuario|null */
-        $usuario = $rpUsuario->getUsuarioByPasswordMD5($e->getParam('username'), $e->getParam('password'), 1) ?? false;
+        $usuario = $rpUsuario->getByName($e->getParam('username')) ?? false;
 
         //$adapter = $container->get('ZF\OAuth2\Doctrine\Adapter\DoctrineAdapter');
+        $hashMD5Ok = $usuario && strcmp($usuario->getPassword(), md5($e->getParam('password'))) === 0;
 
-        if ($usuario instanceof Usuario) {
-            $e->stopPropagation();
-
-            // Atualiza a senha para o BCrypt configurado
-            $usuario->setPassword($this->adapter->getBcrypt()->create($e->getParam('password')));
-            $this->em->flush($usuario);
-
-            return true;
+        if (!$usuario || !($usuario && $usuario->getState() === 1)) {
+            return $e->stopPropagation();
+        } elseif (!($usuario instanceof Usuario && $hashMD5Ok)) {
+            return false;
         }
 
-        return false;
+        // Atualiza a senha para o BCrypt configurado
+        if ($hashMD5Ok) {
+            $hashMD5Ok && $usuario->setPassword($this->adapter->getBcrypt()->create($e->getParam('password')));
+            $this->em->flush($usuario);
+        }
     }
 }

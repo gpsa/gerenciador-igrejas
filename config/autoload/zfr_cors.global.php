@@ -11,8 +11,6 @@ return [
          * Set the list of allowed origins domain with protocol.
          */
         'allowed_origins' => [
-            'http://localhost:8081',
-            'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop'
         ],
 
         /**
