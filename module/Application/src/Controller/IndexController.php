@@ -7,17 +7,17 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
-use Zend\View\Model\JsonModel;
-use ZF\Apigility\Admin\Module as AdminModule;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
+use Laminas\View\Model\JsonModel;
+use Laminas\ApiTools\Admin\Module as AdminModule;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
         if (class_exists(AdminModule::class, false)) {
-            return $this->redirect()->toRoute('zf-apigility/ui');
+            return $this->redirect()->toRoute('api-tools/ui');
         }
         return new JsonModel(['now' => date(DATE_ISO8601)]);
     }

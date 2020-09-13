@@ -141,7 +141,7 @@ class PublicKey
      * @param Client $client
      * @return PublicKey
      */
-    public function setClient(Client $client)
+    public function setClient(?Client $client)
     {
         $this->client = $client;
 

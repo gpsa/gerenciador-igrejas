@@ -4,7 +4,7 @@ namespace Application\Entity\OAuth2;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ZF\OAuth2\Doctrine\Entity\UserInterface;
+use ApiSkeletons\OAuth2\Doctrine\Entity\UserInterface;
 
 /**
  * RefreshToken
@@ -174,7 +174,7 @@ class RefreshToken
      * @param Client $client
      * @return RefreshToken
      */
-    public function setClient(Client $client)
+    public function setClient(?Client $client)
     {
         $this->client = $client;
 

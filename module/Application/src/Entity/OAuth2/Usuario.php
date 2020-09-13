@@ -5,8 +5,8 @@ namespace Application\Entity\OAuth2;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ZF\OAuth2\Doctrine\Entity\UserInterface;
-use Zend\Stdlib\ArraySerializableInterface;
+use ApiSkeletons\OAuth2\Doctrine\Entity\UserInterface;
+use Laminas\Stdlib\ArraySerializableInterface;
 
 /**
  * Usuario

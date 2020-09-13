@@ -1,7 +1,7 @@
 <?php
 namespace Membro\V1\Rest\PessoaMembro;
 
-use Zend\Paginator\Paginator;
+use Laminas\Paginator\Paginator;
 
 class PessoaMembroCollection extends Paginator
 {

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * The user entity is always stored in another namespace than ZF\OAuth2
+ * The user entity is always stored in another namespace than Laminas\ApiTools\OAuth2
  */
 $userEntity = 'Application\Entity\OAuth2\Usuario';
 
 return array(
-    'zf-oauth2-doctrine' => array(
+    'apiskeletons-oauth2-doctrine' => array(
         'default' => array(
             'object_manager' => 'doctrine.entitymanager.orm_default',
             'event_manager' => 'doctrine.eventmanager.orm_default',

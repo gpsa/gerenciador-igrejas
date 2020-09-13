@@ -4,12 +4,12 @@
  * @copyright Copyright (c] 2013-2016 Zend Technologies USA Inc. (http://www.zend.com]
  */
 
-namespace ZF\Doctrine\QueryBuilder;
+namespace Laminas\ApiTools\Doctrine\QueryBuilder;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
-    'zf-apigility-doctrine-query-provider' => [
+    'api-tools-doctrine-query-provider' => [
         'aliases' => [
             'default_orm' => Query\Provider\DefaultOrm::class,
             //         'default_odm' => Query\Provider\DefaultOdm::class,
@@ -19,11 +19,11 @@ return [
             //         Query\Provider\DefaultOdm::class => Query\Provider\DefaultOdmFactory::class,
         ],
     ],
-    'zf-doctrine-querybuilder-options' => [
+    'api-tools-doctrine-querybuilder-options' => [
         'filter_key' => 'filter',
         'order_by_key' => 'order-by',
     ],
-    'zf-doctrine-querybuilder-orderby-orm' => [
+    'api-tools-doctrine-querybuilder-orderby-orm' => [
         'aliases' => [
             'field' => OrderBy\ORM\Field::class,
         ],
@@ -31,7 +31,7 @@ return [
             OrderBy\ORM\Field::class => InvokableFactory::class,
         ],
     ],
-    'zf-doctrine-querybuilder-orderby-odm' => [
+    'api-tools-doctrine-querybuilder-orderby-odm' => [
         'aliases' => [
             'field' => OrderBy\ODM\Field::class,
         ],
@@ -39,7 +39,7 @@ return [
             OrderBy\ODM\Field::class => InvokableFactory::class,
         ],
     ],
-    'zf-doctrine-querybuilder-filter-orm' => [
+    'api-tools-doctrine-querybuilder-filter-orm' => [
         'aliases' => [
             'eq' => Filter\ORM\Equals::class,
             'neq' => Filter\ORM\NotEquals::class,
@@ -77,7 +77,7 @@ return [
             Filter\ORM\AndX::class => InvokableFactory::class,
         ],
     ],
-    'zf-doctrine-querybuilder-filter-odm' => [
+    'api-tools-doctrine-querybuilder-filter-odm' => [
         'aliases' => [
             'eq' => Filter\ODM\Equals::class,
             'neq' => Filter\ODM\NotEquals::class,

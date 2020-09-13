@@ -7,7 +7,7 @@
 namespace Application;
 
 use Application\View\Strategy\ViewXLSXStrategy;
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [

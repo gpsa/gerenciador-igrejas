@@ -11,10 +11,10 @@ namespace Usuario\V1\Rest\Usuario;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
+use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
+use Laminas\ServiceManager\Exception\ServiceNotFoundException;
 
-class UsuarioFactory implements \Zend\ServiceManager\Factory\FactoryInterface
+class UsuarioFactory implements \Laminas\ServiceManager\Factory\FactoryInterface
 {
     /**
      * Create an object

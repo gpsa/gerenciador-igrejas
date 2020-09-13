@@ -13,10 +13,10 @@ namespace Application\EventSubscriber;
 use Application\Entity\OAuth2\Usuario;
 use Application\Entity\OAuth2\UsuarioRepository;
 use Doctrine\ORM\EntityManager;
-use Zend\EventManager\Event;
-use Zend\EventManager\AbstractListenerAggregate;
-use Zend\EventManager\EventManagerInterface;
-use ZF\OAuth2\Doctrine\Adapter\DoctrineAdapter;
+use Laminas\EventManager\Event;
+use Laminas\EventManager\AbstractListenerAggregate;
+use Laminas\EventManager\EventManagerInterface;
+use ApiSkeletons\OAuth2\Doctrine\Adapter\DoctrineAdapter;
 
 class OAuth2AggregateListener extends AbstractListenerAggregate
 {
@@ -56,7 +56,7 @@ class OAuth2AggregateListener extends AbstractListenerAggregate
         /** @var $ret Usuario|null */
         $usuario = $rpUsuario->getByName($e->getParam('username')) ?? false;
 
-        //$adapter = $container->get('ZF\OAuth2\Doctrine\Adapter\DoctrineAdapter');
+        //$adapter = $container->get('ApiSkeletons\OAuth2\Doctrine\Adapter\DoctrineAdapter');
         $hashMD5Ok = $usuario && strcmp($usuario->getPassword(), md5($e->getParam('password'))) === 0;
 
         if (!$usuario || !($usuario && $usuario->getState() === 1)) {

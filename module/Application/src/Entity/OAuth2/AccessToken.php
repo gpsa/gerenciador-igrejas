@@ -2,8 +2,8 @@
 
 namespace Application\Entity\OAuth2;
 
-use Zend\Stdlib\ArraySerializableInterface;
-use ZF\OAuth2\Doctrine\Entity\UserInterface;
+use Laminas\Stdlib\ArraySerializableInterface;
+use ApiSkeletons\OAuth2\Doctrine\Entity\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -173,7 +173,7 @@ class AccessToken implements ArraySerializableInterface
      * @param Client $client
      * @return AccessToken
      */
-    public function setClient(Client $client)
+    public function setClient(?Client $client)
     {
         $this->client = $client;
 

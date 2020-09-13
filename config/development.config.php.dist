@@ -7,10 +7,10 @@
 return [
     // Development time modules
     'modules' => [
-        'ZendDeveloperTools',
-        'ZF\Apigility\Admin',
-        'ZF\Apigility\Doctrine\Admin',
-        'ZF\Apigility\Doctrine\Server',
+        'Laminas\DeveloperTools',
+        'Laminas\ApiTools\Admin',
+        'Laminas\ApiTools\Doctrine\Admin',
+        'Laminas\ApiTools\Doctrine\Server',
     ],
     // development time configuration globbing
     'module_listener_options' => [

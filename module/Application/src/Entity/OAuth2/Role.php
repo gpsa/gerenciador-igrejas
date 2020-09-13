@@ -2,9 +2,9 @@
 
 namespace Application\Entity\OAuth2;
 
-use ZF\OAuth2\Doctrine\Permissions\Acl\Role\HierarchicalInterface;
+use ApiSkeletons\OAuth2\Doctrine\Permissions\Acl\Role\HierarchicalInterface;
 use Doctrine\ORM\Mapping as ORM;
-use ZF\OAuth2\Doctrine\Entity\UserInterface;
+use ApiSkeletons\OAuth2\Doctrine\Entity\UserInterface;
 
 /**
  * Roles

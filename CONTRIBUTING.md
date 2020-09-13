@@ -5,13 +5,13 @@
 If you wish to contribute to this project, please be sure to
 read/subscribe to the following resources:
 
- - [Coding Standards](https://github.com/zendframework/zend-coding-standard)
+ - [Coding Standards](https://github.com/laminas/laminas-coding-standard)
  - [Forums](https://discourse.zendframework.com/c/contributors)
  - [Chat](https://zendframework-slack.herokuapp.com)
  - [Code of Conduct](CODE_OF_CONDUCT.md)
 
 If you are working on new features or refactoring
-[create a proposal](https://github.com/zfcampus/zf-api-problem/issues/new).
+[create a proposal](https://github.com/laminas-api-tools/api-tools-api-problem/issues/new).
 
 ## RUNNING TESTS
 
@@ -20,8 +20,8 @@ To run tests:
 - Clone the repository:
 
   ```console
-  $ git clone git://github.com/zfcampus/zf-api-problem.git
-  $ cd zf-api-problem
+  $ git clone git://github.com/laminas-api-tools/api-tools-api-problem.git
+  $ cd api-tools-api-problem
   ```
 
 - Install dependencies via composer:
@@ -32,10 +32,10 @@ To run tests:
 
   If you don't have `composer` installed, please download it from https://getcomposer.org/download/
 
-- Make sure that `zendframework/zend-test` is installed:
+- Make sure that `laminas/laminas-test` is installed:
   
   ```console
-  $ composer require --dev zendframework/zend-test
+  $ composer require --dev laminas/laminas-test
   ```
 
 - Run the tests using the "test" command shipped in the `composer.json`:
@@ -84,19 +84,19 @@ pull your work into the master repository. We recommend using
 [GitHub](https://github.com), as that is where the component is already hosted.
 
 1. Setup a [GitHub account](https://github.com/), if you haven't yet
-2. Fork the repository (https://github.com/zfcampus/zf-api-problem)
+2. Fork the repository (https://github.com/laminas-api-tools/api-tools-api-problem)
 3. Clone the canonical repository locally and enter it.
 
    ```console
-   $ git clone git://github.com/zfcampus/zf-api-problem.git
-   $ cd zf-api-problem
+   $ git clone git://github.com/laminas-api-tools/api-tools-api-problem.git
+   $ cd api-tools-api-problem
    ```
 
 4. Add a remote to your fork; substitute your GitHub username in the command
    below.
 
    ```console
-   $ git remote add {username} git@github.com:{username}/zf-api-problem.git
+   $ git remote add {username} git@github.com:{username}/api-tools-api-problem.git
    $ git fetch {username}
    ```
 
@@ -159,7 +159,7 @@ Delta compression using up to 2 threads.
 Compression objects: 100% (18/18), done.
 Writing objects: 100% (20/20), 8.19KiB, done.
 Total 20 (delta 12), reused 0 (delta 0)
-To ssh://git@github.com/{username}/zf-api-problem.git
+To ssh://git@github.com/{username}/api-tools-api-problem.git
    b5583aa..4f51698  HEAD -> master
 ```
 

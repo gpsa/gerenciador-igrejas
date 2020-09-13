@@ -19,4 +19,4 @@ RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
 
 Order Deny,Allow
 Deny from all
-Allow from 127.0.0.1
+Allow from all

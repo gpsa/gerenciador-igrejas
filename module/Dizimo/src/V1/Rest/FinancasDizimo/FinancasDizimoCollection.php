@@ -1,7 +1,7 @@
 <?php
 namespace Dizimo\V1\Rest\FinancasDizimo;
 
-use Zend\Paginator\Paginator;
+use Laminas\Paginator\Paginator;
 
 class FinancasDizimoCollection extends Paginator
 {

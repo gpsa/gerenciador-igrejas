@@ -12,12 +12,12 @@ namespace Membro\V1\Rest\PessoaMembro;
 use Doctrine\ORM\QueryBuilder;
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
-use Zend\ServiceManager\Factory\FactoryInterface;
-use Zend\Stdlib\Parameters;
-use ZF\Doctrine\QueryBuilder\Query\Provider\DefaultOrm;
-use ZF\Rest\ResourceEvent;
+use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
+use Laminas\ServiceManager\Exception\ServiceNotFoundException;
+use Laminas\ServiceManager\Factory\FactoryInterface;
+use Laminas\Stdlib\Parameters;
+use Laminas\ApiTools\Doctrine\QueryBuilder\Query\Provider\DefaultOrm;
+use Laminas\ApiTools\Rest\ResourceEvent;
 
 class PessoaMembroFetchAll extends DefaultOrm
 {

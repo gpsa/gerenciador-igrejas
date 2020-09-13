@@ -6,12 +6,12 @@ use Application\Entity\PessoaMembro;
 use Doctrine\ORM\EntityManager;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use Zend\Http\Headers;
-use Zend\Mvc\Controller\AbstractActionController;
-use ZF\ApiProblem\ApiProblem;
-use ZF\ApiProblem\ApiProblemResponse;
-use ZF\Doctrine\QueryBuilder\Filter\Service\ORMFilterManager;
-use ZF\Doctrine\QueryBuilder\OrderBy\Service\ORMOrderByManager;
+use Laminas\Http\Headers;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\ApiTools\ApiProblem\ApiProblem;
+use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
+use Laminas\ApiTools\Doctrine\QueryBuilder\Filter\Service\ORMFilterManager;
+use Laminas\ApiTools\Doctrine\QueryBuilder\OrderBy\Service\ORMOrderByManager;
 use ZfrCors\Service\CorsService;
 
 class RelatorioAniversariantesController extends AbstractActionController
@@ -59,7 +59,7 @@ class RelatorioAniversariantesController extends AbstractActionController
 
         $result = $queryBuilder->getQuery()->iterate();
 
-        /* @var $request \ZF\ContentNegotiation\Request */
+        /* @var $request \Laminas\ApiTools\ContentNegotiation\Request */
         $request = $this->getRequest();
 
         // Create new Spreadsheet object
@@ -130,7 +130,7 @@ class RelatorioAniversariantesController extends AbstractActionController
         //        $filtros = $request->getQuery('filter');
         //        $fromTo = (isset($filtros[0]['from']) ? sprintf)
 
-        /* @var $response \Zend\Http\PhpEnvironment\Response */
+        /* @var $response \Laminas\Http\PhpEnvironment\Response */
         $response = $this->getResponse();
         $response->setHeaders((new Headers())->addHeaders([
             'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',

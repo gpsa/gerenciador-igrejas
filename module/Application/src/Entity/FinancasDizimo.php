@@ -125,4 +125,9 @@ class FinancasDizimo
     {
         return $this->membro;
     }
+
+    public function getMembroNome()
+    {
+        return $this->membro->getNome();
+    }
 }

@@ -1,18 +1,18 @@
 <?php
 return [
-    'zf-content-negotiation' => [
+    'api-tools-content-negotiation' => [
         'selectors' => [],
     ],
     'db' => [
         'adapters' => [],
     ],
-    'zf-oauth2' => [
+    'api-tools-oauth2' => [
         'storage' => 'oauth2.doctrineadapter.default',
         'options' => [
             'always_issue_new_refresh_token' => true,
         ],
     ],
-    'zf-mvc-auth' => [
+    'api-tools-mvc-auth' => [
         'authentication' => [
             'map' => [
                 'Membro\\V1' => 'oauth2_doctrine',

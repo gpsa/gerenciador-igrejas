@@ -112,7 +112,7 @@ class Jwt
      * @param Client $client
      * @return Jwt
      */
-    public function setClient(Client $client)
+    public function setClient(?Client $client)
     {
         $this->client = $client;
 

@@ -13,12 +13,12 @@ return [
             ],
         ],
     ],
-    'zf-versioning' => [
+    'api-tools-versioning' => [
         'uri' => [
             0 => 'usuario.rest.doctrine.usuario',
         ],
     ],
-    'zf-rest' => [
+    'api-tools-rest' => [
         'Usuario\\V1\\Rest\\Usuario\\Controller' => [
             'listener' => \Usuario\V1\Rest\Usuario\UsuarioResource::class,
             'route_name' => 'usuario.rest.doctrine.usuario',
@@ -42,7 +42,7 @@ return [
             'service_name' => 'Usuario',
         ],
     ],
-    'zf-content-negotiation' => [
+    'api-tools-content-negotiation' => [
         'controllers' => [
             'Usuario\\V1\\Rest\\Usuario\\Controller' => 'HalJson',
         ],
@@ -59,7 +59,7 @@ return [
             ],
         ],
     ],
-    'zf-hal' => [
+    'api-tools-hal' => [
         'metadata_map' => [
             \Application\Entity\OAuth2\Usuario::class => [
                 'route_identifier_name' => 'usuario_id',
@@ -74,7 +74,7 @@ return [
             ],
         ],
     ],
-    'zf-apigility' => [
+    'api-tools' => [
         'doctrine-connected' => [
             \Usuario\V1\Rest\Usuario\UsuarioResource::class => [
                 'object_manager' => 'doctrine.entitymanager.orm_default',
@@ -98,7 +98,7 @@ return [
             ],
         ],
     ],
-    'zf-content-validation' => [
+    'api-tools-content-validation' => [
         'Usuario\\V1\\Rest\\Usuario\\Controller' => [
             'input_filter' => 'Usuario\\V1\\Rest\\Usuario\\Validator',
         ],
@@ -110,15 +110,15 @@ return [
                 'required' => true,
                 'filters' => [
                     0 => [
-                        'name' => \Zend\Filter\StringTrim::class,
+                        'name' => \Laminas\Filter\StringTrim::class,
                     ],
                     1 => [
-                        'name' => \Zend\Filter\StripTags::class,
+                        'name' => \Laminas\Filter\StripTags::class,
                     ],
                 ],
                 'validators' => [
                     0 => [
-                        'name' => \Zend\Validator\StringLength::class,
+                        'name' => \Laminas\Validator\StringLength::class,
                         'options' => [
                             'min' => 1,
                             'max' => 255,
@@ -131,15 +131,15 @@ return [
                 'required' => true,
                 'filters' => [
                     0 => [
-                        'name' => \Zend\Filter\StringTrim::class,
+                        'name' => \Laminas\Filter\StringTrim::class,
                     ],
                     1 => [
-                        'name' => \Zend\Filter\StripTags::class,
+                        'name' => \Laminas\Filter\StripTags::class,
                     ],
                 ],
                 'validators' => [
                     0 => [
-                        'name' => \Zend\Validator\StringLength::class,
+                        'name' => \Laminas\Validator\StringLength::class,
                         'options' => [
                             'min' => 1,
                             'max' => 128,
@@ -152,15 +152,15 @@ return [
                 'required' => false,
                 'filters' => [
                     0 => [
-                        'name' => \Zend\Filter\StringTrim::class,
+                        'name' => \Laminas\Filter\StringTrim::class,
                     ],
                     1 => [
-                        'name' => \Zend\Filter\StripTags::class,
+                        'name' => \Laminas\Filter\StripTags::class,
                     ],
                 ],
                 'validators' => [
                     0 => [
-                        'name' => \Zend\Validator\StringLength::class,
+                        'name' => \Laminas\Validator\StringLength::class,
                         'options' => [
                             'min' => 1,
                             'max' => 100,
@@ -173,11 +173,11 @@ return [
                 'required' => true,
                 'filters' => [
                     0 => [
-                        'name' => \Zend\Filter\Boolean::class,
+                        'name' => \Laminas\Filter\Boolean::class,
                         'options' => [],
                     ],
                     1 => [
-                        'name' => \Zend\Filter\ToInt::class,
+                        'name' => \Laminas\Filter\ToInt::class,
                         'options' => [],
                     ],
                 ],
@@ -187,7 +187,7 @@ return [
                 'required' => true,
                 'validators' => [
                     0 => [
-                        'name' => \Zend\Validator\EmailAddress::class,
+                        'name' => \Laminas\Validator\EmailAddress::class,
                         'options' => [
                             'message' => 'Informe um e-mail válido',
                         ],
@@ -195,19 +195,19 @@ return [
                 ],
                 'filters' => [
                     0 => [
-                        'name' => \Zend\Filter\StripNewlines::class,
+                        'name' => \Laminas\Filter\StripNewlines::class,
                         'options' => [],
                     ],
                     1 => [
-                        'name' => \Zend\Filter\StripTags::class,
+                        'name' => \Laminas\Filter\StripTags::class,
                         'options' => [],
                     ],
                     2 => [
-                        'name' => \Zend\Filter\StringTrim::class,
+                        'name' => \Laminas\Filter\StringTrim::class,
                         'options' => [],
                     ],
                     3 => [
-                        'name' => \Zend\Filter\StringToLower::class,
+                        'name' => \Laminas\Filter\StringToLower::class,
                         'options' => [],
                     ],
                 ],
@@ -219,11 +219,11 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            \Usuario\V1\Rest\Usuario\UsuarioFilter::class => \Zend\ServiceManager\Factory\InvokableFactory::class,
-            \Usuario\V1\Rest\Usuario\UsuarioFactory::class => \Zend\ServiceManager\Factory\InvokableFactory::class,
+            \Usuario\V1\Rest\Usuario\UsuarioFilter::class => \Laminas\ServiceManager\Factory\InvokableFactory::class,
+            \Usuario\V1\Rest\Usuario\UsuarioFactory::class => \Laminas\ServiceManager\Factory\InvokableFactory::class,
         ],
     ],
-    'zf-mvc-auth' => [
+    'api-tools-mvc-auth' => [
         'authorization' => [
             'Usuario\\V1\\Rest\\Usuario\\Controller' => [
                 'collection' => [

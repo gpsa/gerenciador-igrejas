@@ -23,13 +23,13 @@ return [
             ],
         ],
     ],
-    'zf-versioning' => [
+    'api-tools-versioning' => [
         'uri' => [
             0 => 'dizimo.rest.doctrine.financas-dizimo',
             1 => 'dizimo.rpc.relatorio',
         ],
     ],
-    'zf-rest' => [
+    'api-tools-rest' => [
         'Dizimo\\V1\\Rest\\FinancasDizimo\\Controller' => [
             'listener' => \Dizimo\V1\Rest\FinancasDizimo\FinancasDizimoResource::class,
             'route_name' => 'dizimo.rest.doctrine.financas-dizimo',
@@ -54,7 +54,7 @@ return [
             'service_name' => 'FinancasDizimo',
         ],
     ],
-    'zf-content-negotiation' => [
+    'api-tools-content-negotiation' => [
         'controllers' => [
             'Dizimo\\V1\\Rest\\FinancasDizimo\\Controller' => 'HalJsonOrXLSX',
             'Dizimo\\V1\\Rpc\\Relatorio\\Controller' => 'HalJson',
@@ -96,7 +96,7 @@ return [
         ],
         'selectors' => [
             'HalJson' => [
-                \ZF\Hal\View\HalJsonModel::class => [
+                \Laminas\ApiTools\Hal\View\HalJsonModel::class => [
                     0 => 'application/json',
                     1 => 'application/*+json',
                 ],
@@ -107,7 +107,7 @@ return [
                 ],
             ],
             'HalJsonOrXLSX' => [
-                \ZF\Hal\View\HalJsonModel::class => [
+                \Laminas\ApiTools\Hal\View\HalJsonModel::class => [
                     0 => 'application/json',
                     1 => 'application/*+json',
                 ],
@@ -117,7 +117,7 @@ return [
             ],
         ],
     ],
-    'zf-hal' => [
+    'api-tools-hal' => [
         'metadata_map' => [
             \Application\Entity\FinancasDizimo::class => [
                 'route_identifier_name' => 'financas_dizimo_id',
@@ -132,11 +132,11 @@ return [
             ],
         ],
     ],
-    'zf-apigility' => [
+    'api-tools' => [
         'doctrine-connected' => [
             \Dizimo\V1\Rest\FinancasDizimo\FinancasDizimoResource::class => [
                 'object_manager' => 'doctrine.entitymanager.orm_default',
-                'hydrator' => 'Dizimo\\V1\\Rest\\FinancasDizimo\\FinancasDizimoHydrator',
+                'hydrator' => 'Dizimo\\V1\\Rest\\FinancasDizimo\\FinancasDizimoHydrator'
             ],
         ],
     ],
@@ -146,12 +146,12 @@ return [
             'object_manager' => 'doctrine.entitymanager.orm_default',
             'by_value' => true,
             'strategies' => [
-                'membro' => \ZF\Doctrine\Hydrator\Strategy\EntityLink::class,
+                'membro' => \ApiSkeletons\Doctrine\Hydrator\Strategy\EntityLink::class,
             ],
             'use_generated_hydrator' => true,
         ],
     ],
-    'zf-content-validation' => [
+    'api-tools-content-validation' => [
         'Dizimo\\V1\\Rest\\FinancasDizimo\\Controller' => [
             'input_filter' => 'Dizimo\\V1\\Rest\\FinancasDizimo\\Validator',
         ],
@@ -164,7 +164,7 @@ return [
                 'filters' => [],
                 'validators' => [
                     0 => [
-                        'name' => \Zend\I18n\Validator\DateTime::class,
+                        'name' => \Laminas\I18n\Validator\DateTime::class,
                         'options' => [
                             'message' => 'Formato de data inválido',
                             'pattern' => 'Y-m-d',
@@ -177,21 +177,21 @@ return [
                 'required' => true,
                 'filters' => [
                     0 => [
-                        'name' => \Zend\Filter\StringTrim::class,
+                        'name' => \Laminas\Filter\StringTrim::class,
                     ],
                     1 => [
-                        'name' => \Zend\Filter\StripTags::class,
+                        'name' => \Laminas\Filter\StripTags::class,
                     ],
                 ],
                 'validators' => [
                     0 => [
-                        'name' => \Zend\I18n\Validator\IsFloat::class,
+                        'name' => \Laminas\I18n\Validator\IsFloat::class,
                         'options' => [
                             'message' => 'Informe o valor no formato 0000.00',
                         ],
                     ],
                     1 => [
-                        'name' => \Zend\Validator\Regex::class,
+                        'name' => \Laminas\Validator\Regex::class,
                         'options' => [
                             'pattern' => '/^([0-9]{0,8})\\.[0-9]{1,2}/',
                             'message' => 'O número deve seguir o seguinte padrão: 0.00, e são permitidos apenas 8 números à esquerda.',
@@ -199,7 +199,7 @@ return [
                         ],
                     ],
                     2 => [
-                        'name' => \Zend\Validator\StringLength::class,
+                        'name' => \Laminas\Validator\StringLength::class,
                         'options' => [
                             'min' => 1,
                             'max' => '11',
@@ -212,17 +212,17 @@ return [
                 'required' => true,
                 'filters' => [
                     0 => [
-                        'name' => \Zend\Filter\StripTags::class,
+                        'name' => \Laminas\Filter\StripTags::class,
                     ],
                     1 => [
-                        'name' => \Zend\Filter\Digits::class,
+                        'name' => \Laminas\Filter\Digits::class,
                     ],
                 ],
                 'validators' => [],
             ],
         ],
     ],
-    'zf-mvc-auth' => [
+    'api-tools-mvc-auth' => [
         'authorization' => [
             'Dizimo\\V1\\Rest\\FinancasDizimo\\Controller' => [
                 'collection' => [
@@ -258,7 +258,7 @@ return [
             'Dizimo\\V1\\Rpc\\Relatorio\\Controller' => \Dizimo\V1\Rpc\Relatorio\RelatorioControllerFactory::class,
         ],
     ],
-    'zf-rpc' => [
+    'api-tools-rpc' => [
         'Dizimo\\V1\\Rpc\\Relatorio\\Controller' => [
             'service_name' => 'RelatorioDizimos',
             'http_methods' => [
@@ -267,4 +267,9 @@ return [
             'route_name' => 'dizimo.rpc.relatorio',
         ],
     ],
+    'service_manager' => [
+        'factories' => [
+            \Dizimo\V1\Rest\FinancasDizimo\FinancasDizimoMembroStrategy::class => \Dizimo\V1\Rest\FinancasDizimo\FinancasDizimoMembroStrategy::class
+        ]
+    ]
 ];

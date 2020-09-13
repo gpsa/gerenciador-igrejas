@@ -5,8 +5,8 @@ namespace Usuario\V1\Rest\Usuario;
 use Application\Entity\OAuth2\Client;
 use Application\Entity\OAuth2\Usuario;
 use Doctrine\Common\Collections\Criteria;
-use ZF\Apigility\Doctrine\Server\Resource\DoctrineResource;
-use ZF\OAuth2\Doctrine\Adapter\DoctrineAdapter;
+use Laminas\ApiTools\Doctrine\Server\Resource\DoctrineResource;
+use ApiSkeletons\OAuth2\Doctrine\Adapter\DoctrineAdapter;
 
 class UsuarioResource extends DoctrineResource
 {
@@ -23,7 +23,7 @@ class UsuarioResource extends DoctrineResource
     {
         // Retorna o próprio usuário
         if ($id === 'me') {
-            /* @var $identity \ZF\OAuth2\Doctrine\Identity\AuthenticatedIdentity */
+            /* @var $identity \ApiSkeletons\OAuth2\Doctrine\Identity\AuthenticatedIdentity */
             $identity = $this->getIdentity();
             /* @var $user \Application\Entity\OAuth2\Usuario */
             $user = $identity->getUser();

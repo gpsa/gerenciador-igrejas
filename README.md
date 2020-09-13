@@ -12,7 +12,7 @@ Installation
 ### Via release tarball
 
 Grab the latest release via the [Apigility website](http://apigility.org/)
-and/or the [releases page](https://github.com/zfcampus/zf-apigility-skeleton/releases); each release
+and/or the [releases page](https://github.com/laminas-api-tools/api-tools-skeleton/releases); each release
 has distribution tarballs and zipballs available.
 
 Untar it:
@@ -38,7 +38,7 @@ to create the project in one go (you need to install [composer](https://getcompo
 
 ```bash
 $ curl -s https://getcomposer.org/installer | php -- --filename=composer
-$ composer create-project -sdev zfcampus/zf-apigility-skeleton path/to/install
+$ composer create-project -sdev laminas-api-tools/api-tools-skeleton path/to/install
 ```
 
 ### Via Git (clone)
@@ -46,7 +46,7 @@ $ composer create-project -sdev zfcampus/zf-apigility-skeleton path/to/install
 First, clone the repository:
 
 ```bash
-# git clone https://github.com/zfcampus/zf-apigility-skeleton.git # optionally, specify the directory in which to clone
+# git clone https://github.com/laminas-api-tools/api-tools-skeleton.git # optionally, specify the directory in which to clone
 $ cd path/to/install
 ```
 
@@ -193,7 +193,7 @@ If you develop or deploy using Docker, we provide configuration for you.
 Prepare your development environment using [docker compose](https://docs.docker.com/compose/install/):
 
 ```bash
-$ git clone https://github.com/zfcampus/zf-apigility-skeleton
+$ git clone https://github.com/laminas-api-tools/api-tools-skeleton
 $ cd zf-apigility-skeleton
 $ docker-compose build
 # Install dependencies via composer, if you haven't already:
@@ -230,7 +230,7 @@ QA Tools
 --------
 
 The skeleton ships with minimal QA tooling by default, including
-zendframework/zend-test. We supply basic tests for the shipped
+laminas/laminas-test. We supply basic tests for the shipped
 `Application\Controller\IndexController`.
 
 We also ship with configuration for [phpcs](https://github.com/squizlabs/php_codesniffer).

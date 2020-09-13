@@ -9,7 +9,7 @@
 namespace Usuario\V1\Rest\Usuario;
 
 
-use Zend\Hydrator\Filter\FilterInterface;
+use Laminas\Hydrator\Filter\FilterInterface;
 
 class UsuarioFilter implements FilterInterface
 {

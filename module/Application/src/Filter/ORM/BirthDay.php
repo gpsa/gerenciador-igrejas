@@ -9,7 +9,7 @@
 namespace Application\Filter\ORM;
 
 
-use ZF\Doctrine\QueryBuilder\Filter\ORM\AbstractFilter;
+use Laminas\ApiTools\Doctrine\QueryBuilder\Filter\ORM\AbstractFilter;
 
 class BirthDay extends AbstractFilter
 {

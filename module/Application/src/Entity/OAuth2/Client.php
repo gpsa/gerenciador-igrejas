@@ -2,8 +2,8 @@
 
 namespace Application\Entity\OAuth2;
 
-use Zend\Stdlib\ArraySerializableInterface;
-use ZF\OAuth2\Doctrine\Entity\UserInterface;
+use Laminas\Stdlib\ArraySerializableInterface;
+use ApiSkeletons\OAuth2\Doctrine\Entity\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -515,7 +515,7 @@ class Client implements ArraySerializableInterface
      * @param $user
      * @return Client
      */
-    public function setUser(UserInterface $user = null)
+    public function setUser(?UserInterface $user = null)
     {
         $this->user = $user;
 

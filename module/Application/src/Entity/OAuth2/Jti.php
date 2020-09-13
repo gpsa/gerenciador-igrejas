@@ -200,7 +200,7 @@ class Jti
      * @param Client $client
      * @return Jti
      */
-    public function setClient(Client $client)
+    public function setClient(?Client $client)
     {
         $this->client = $client;
 
